@@ -9,6 +9,9 @@
     "editor.formatOnSave": true
   },
   "cSpell.words": [
-    "deno"
+    "Bson",
+    "datetime",
+    "deno",
+    "djwt"
   ]
 }
