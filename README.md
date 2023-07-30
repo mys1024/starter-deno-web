@@ -27,6 +27,20 @@ The environment variables without default values are required.
 
 You can create an file named `.env` in the root directory of this project, and set these environment variables in it. `src/config.ts` will load environment variables from file `.env`.
 
+## Tasks
+
+Execute `deno task run` to run this project.
+
+All available tasks:
+
+- run
+- run:watch
+- cache
+- cache:lock
+- keygen
+
+You can see `deno.jsonc` for details.
+
 ## License
 
 MIT License © 2023 mys1024
