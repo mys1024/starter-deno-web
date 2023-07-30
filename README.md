@@ -9,7 +9,7 @@ A [Deno](https://deno.land/) web project stater template.
 
 ## Environment variables
 
-Please set these environments variables  before running:
+Please set these environments variables before running:
 
 ```shell
 # timezone offset in minutes, default: 0
