@@ -29,7 +29,11 @@ You can create an file named `.env` in the root directory of this project, and s
 
 ## Tasks
 
-Execute `deno task run` to run this project.
+Execute task `run` to run this project:
+
+```shell
+deno task run
+```
 
 All available tasks:
 
