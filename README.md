@@ -5,7 +5,7 @@ A [Deno](https://deno.land/) web project stater template.
 ## Features
 
 - [Oak](https://oakserver.github.io/oak/), with middleware Logger, CORS and JWT
-- MongoDB
+- [MongoDB](https://deno.land/x/mongo@v0.31.2)
 
 ## Environment variables
 
