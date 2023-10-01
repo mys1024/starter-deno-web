@@ -1,34 +1,34 @@
 import type { JwtPayload } from "../types/jwt.ts";
-import { oak } from "../deps.ts";
+import { MiddlewareHandler } from "../deps.ts";
 import { verifyJwt } from "../utils/auth.ts";
 
-interface JwtState {
-  jwt: {
-    token: string;
-    payload: JwtPayload;
+export function jwt(): MiddlewareHandler<{
+  Variables: {
+    jwt: {
+      token: string;
+      payload: JwtPayload;
+    };
   };
-}
-
-export function jwt(): oak.Middleware<JwtState> {
-  return async (ctx, next) => {
+}> {
+  return async (c, next) => {
     // get token from headers or search params
-    const token = ctx.request.headers.get("x-auth-token") ||
-      ctx.request.url.searchParams.get("auth_token");
+    const token = c.req.header("x-auth-token") ||
+      c.req.query("auth_token");
     if (!token) {
-      ctx.response.status = 401;
+      c.status(401);
       return;
     }
     // verify token
     const payload = await verifyJwt(token);
     if (!payload) {
-      ctx.response.status = 403;
+      c.status(403);
       return;
     }
-    // set ctx.state
-    ctx.state.jwt = {
+    // set jwt variable
+    c.set("jwt", {
       token,
       payload,
-    };
+    });
     // next
     await next();
   };

@@ -1,7 +1,13 @@
 import app from "./app.ts";
 import output from "./utils/output.ts";
 
+const hostname = "::";
 const port = 80;
 
-app.listen({ port });
-output.info(`Serving HTTP on port ${port}...`);
+Deno.serve({
+  port,
+  hostname,
+  onListen: () => {
+    output.info(`Serving HTTP on hostname: "${hostname}", port: ${port}.`);
+  },
+}, app.fetch);

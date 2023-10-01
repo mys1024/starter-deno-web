@@ -1,16 +1,16 @@
-import { oak, oakCors } from "./deps.ts";
+import { cors, Hono } from "./deps.ts";
 import logger from "./middleware/logger.ts";
 import router from "./router/index.ts";
 
-const app = new oak.Application();
+const app = new Hono();
 
 // logger
 app.use(logger());
 
 // cors
-app.use(oakCors());
+app.use(cors());
 
 // router
-app.use(router.routes(), router.allowedMethods());
+app.route("/", router);
 
 export default app;

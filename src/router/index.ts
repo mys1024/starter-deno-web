@@ -1,14 +1,23 @@
-import { oak } from "../deps.ts";
+import type { JwtPayload } from "../types/jwt.ts";
+import { Hono } from "../deps.ts";
 import { jwt } from "../middleware/jwt.ts";
 
-const router = new oak.Router();
+const router = new Hono<{
+  Variables: {
+    jwt: {
+      token: string;
+      payload: JwtPayload;
+    };
+  };
+}>();
 
-router.get("/", (ctx) => {
-  ctx.response.body = "Hello, world!";
+router.get("/", (c) => {
+  return c.text("Hello, world!");
 });
 
-router.get("/me", jwt(), (ctx) => {
-  ctx.response.body = `Hi, ${ctx.state.jwt.payload.username}!`;
+router.get("/me", jwt(), (c) => {
+  const { payload } = c.get("jwt");
+  return c.text(`Hi, ${payload.username}!`);
 });
 
 export default router;

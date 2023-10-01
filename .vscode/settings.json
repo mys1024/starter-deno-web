@@ -12,6 +12,7 @@
     "Bson",
     "datetime",
     "deno",
-    "djwt"
+    "djwt",
+    "Hono"
   ]
 }
