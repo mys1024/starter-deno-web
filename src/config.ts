@@ -45,8 +45,3 @@ export const JWT_KEY_PRIVATE = await crypto.subtle.importKey(
   false,
   ["sign"],
 );
-
-/**
- * The URI of database.
- */
-export const DB_URI = getEnvVar("DB_URI", true);

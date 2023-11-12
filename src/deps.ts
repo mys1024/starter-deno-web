@@ -13,10 +13,3 @@ export * as oak from "https://deno.land/x/oak@v12.6.0/mod.ts";
 export { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 
 export * as djwt from "https://deno.land/x/djwt@v2.9.1/mod.ts";
-
-export {
-  Bson,
-  Collection,
-  MongoClient,
-  ObjectId,
-} from "https://deno.land/x/mongo@v0.31.2/mod.ts";

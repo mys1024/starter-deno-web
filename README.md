@@ -5,7 +5,6 @@ A [Deno](https://deno.land/) web project stater template.
 ## Features
 
 - [Oak](https://oakserver.github.io/oak/), with middleware Logger, CORS and JWT
-- [MongoDB](https://deno.land/x/mongo@v0.31.2)
 
 ## Environment variables
 
@@ -18,12 +17,9 @@ TIMEZONE_OFFSET = ""
 # base64 encoded ES256 key pair for JWT, run `deno task keygen` to generate them randomly
 JWT_KEY_PUBLIC = ""
 JWT_KEY_PRIVATE = ""
-
-# MongoDB URI
-DB_URI = ""
 ```
 
-The environment variables without default values are required.
+The environment variables without default value are required.
 
 You can create an file named `.env` in the root directory of this project, and set these environment variables in it. `src/config.ts` will load environment variables from file `.env`.
 
