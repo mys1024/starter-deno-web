@@ -3,7 +3,7 @@ import { JWT_KEY_PRIVATE, JWT_KEY_PUBLIC } from "../config.ts";
 import { asyncIgnoreError } from "./plain.ts";
 import type { JwtPayload } from "../types/jwt.ts";
 
-export async function signJwt(
+async function signJwt(
   ttl: number,
   payload: JwtPayload,
 ) {
@@ -19,8 +19,10 @@ export async function signJwt(
   );
 }
 
-export async function verifyJwt(jwt: string) {
+async function verifyJwt(jwt: string) {
   return await (asyncIgnoreError(async () =>
     await djwt.verify(jwt, JWT_KEY_PUBLIC) as JwtPayload
   ));
 }
+
+export { signJwt, verifyJwt };

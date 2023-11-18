@@ -9,7 +9,7 @@ interface JwtState {
   };
 }
 
-export function jwt(): oak.Middleware<JwtState> {
+function jwt(): oak.Middleware<JwtState> {
   return async (ctx, next) => {
     // get token from headers or search params
     const token = ctx.request.headers.get("x-auth-token") ||

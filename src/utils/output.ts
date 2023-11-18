@@ -2,34 +2,34 @@ import { colors } from "../deps.ts";
 import { iso8601WithOffset } from "./plain.ts";
 import { TIMEZONE_OFFSET } from "../config.ts";
 
-export function info(message: string) {
+function info(message: string) {
   console.info(
-    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     colors.white(colors.bgBlue(" INFO ")),
+    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     message,
   );
 }
 
-export function warn(message: string) {
+function warn(message: string) {
   console.warn(
-    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     colors.black(colors.bgYellow(" WARN ")),
+    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     message,
   );
 }
 
-export function error(message: string) {
+function error(message: string) {
   console.error(
-    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     colors.white(colors.bgRed(" ERR  ")),
+    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     message,
   );
 }
 
-export function log(message: string) {
+function log(message: string) {
   console.log(
-    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     colors.black(colors.bgWhite(" LOG  ")),
+    colors.gray(iso8601WithOffset(Date.now(), TIMEZONE_OFFSET)),
     message,
   );
 }

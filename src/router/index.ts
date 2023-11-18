@@ -1,5 +1,5 @@
 import { oak } from "../deps.ts";
-import { jwt } from "../middleware/jwt.ts";
+import jwt from "../middleware/jwt.ts";
 import { getCount, increaseCount } from "../dao/count.ts";
 
 const router = new oak.Router();

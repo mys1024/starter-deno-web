@@ -20,14 +20,14 @@ function getEnvVar<REQUIRED extends boolean>(
 /**
  * Timezone offset in minutes compared to UTC time.
  */
-export const TIMEZONE_OFFSET = Number.parseInt(
+const TIMEZONE_OFFSET = Number.parseInt(
   getEnvVar("TIMEZONE_OFFSET", false) || "0",
 );
 
 /**
  * The ES256 public key for JWT.
  */
-export const JWT_KEY_PUBLIC = await crypto.subtle.importKey(
+const JWT_KEY_PUBLIC = await crypto.subtle.importKey(
   "spki",
   decodeBase64(getEnvVar("JWT_KEY_PUBLIC", true)),
   { name: "ECDSA", namedCurve: "P-256" },
@@ -38,10 +38,12 @@ export const JWT_KEY_PUBLIC = await crypto.subtle.importKey(
 /**
  * The ES256 private key for JWT.
  */
-export const JWT_KEY_PRIVATE = await crypto.subtle.importKey(
+const JWT_KEY_PRIVATE = await crypto.subtle.importKey(
   "pkcs8",
   decodeBase64(getEnvVar("JWT_KEY_PRIVATE", true)),
   { name: "ECDSA", namedCurve: "P-256" },
   false,
   ["sign"],
 );
+
+export { JWT_KEY_PRIVATE, JWT_KEY_PUBLIC, TIMEZONE_OFFSET };

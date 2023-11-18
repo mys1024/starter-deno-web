@@ -1,14 +1,14 @@
-export async function asyncIgnoreError<T>(func: () => Promise<T>) {
+function ignoreError<T>(func: () => T) {
   try {
-    return await func();
+    return func();
   } catch (_err) {
     return undefined;
   }
 }
 
-export function ignoreError<T>(func: () => T) {
+async function asyncIgnoreError<T>(func: () => Promise<T>) {
   try {
-    return func();
+    return await func();
   } catch (_err) {
     return undefined;
   }
@@ -20,7 +20,7 @@ export function ignoreError<T>(func: () => T) {
  * @param offset Timezone offset in minutes.
  * @returns ISO 8601 datetime string.
  */
-export function iso8601WithOffset(timestamp: number, offset: number) {
+function iso8601WithOffset(timestamp: number, offset: number) {
   if (Number.isNaN(offset)) {
     throw new Error("Offset is NaN.");
   }
@@ -38,3 +38,5 @@ export function iso8601WithOffset(timestamp: number, offset: number) {
     }${offsetMinutes}`,
   );
 }
+
+export { asyncIgnoreError, ignoreError, iso8601WithOffset };
