@@ -1,4 +1,4 @@
-import { base64, loadDotEnv } from "./deps.ts";
+import { decodeBase64, loadDotEnv } from "./deps.ts";
 
 // load .env
 await loadDotEnv({ export: true });
@@ -29,7 +29,7 @@ export const TIMEZONE_OFFSET = Number.parseInt(
  */
 export const JWT_KEY_PUBLIC = await crypto.subtle.importKey(
   "spki",
-  base64.decode(getEnvVar("JWT_KEY_PUBLIC", true)),
+  decodeBase64(getEnvVar("JWT_KEY_PUBLIC", true)),
   { name: "ECDSA", namedCurve: "P-256" },
   false,
   ["verify"],
@@ -40,7 +40,7 @@ export const JWT_KEY_PUBLIC = await crypto.subtle.importKey(
  */
 export const JWT_KEY_PRIVATE = await crypto.subtle.importKey(
   "pkcs8",
-  base64.decode(getEnvVar("JWT_KEY_PRIVATE", true)),
+  decodeBase64(getEnvVar("JWT_KEY_PRIVATE", true)),
   { name: "ECDSA", namedCurve: "P-256" },
   false,
   ["sign"],

@@ -2,7 +2,10 @@
 
 export { load as loadDotEnv } from "https://deno.land/std@0.206.0/dotenv/mod.ts";
 
-export * as base64 from "https://deno.land/std@0.206.0/encoding/base64.ts";
+export {
+  decodeBase64,
+  encodeBase64,
+} from "https://deno.land/std@0.206.0/encoding/base64.ts";
 
 export * as colors from "https://deno.land/std@0.206.0/fmt/colors.ts";
 

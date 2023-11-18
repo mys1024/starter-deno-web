@@ -4,7 +4,7 @@ import { asyncIgnoreError } from "./plain.ts";
 import type { JwtPayload } from "../types/jwt.ts";
 
 export async function signJwt(
-  duration: number,
+  ttl: number,
   payload: JwtPayload,
 ) {
   const now = Math.floor(Date.now() / 1000);
@@ -13,7 +13,7 @@ export async function signJwt(
     {
       ...payload,
       nbf: now,
-      exp: now + Math.floor(duration),
+      exp: now + Math.floor(ttl),
     },
     JWT_KEY_PRIVATE,
   );
