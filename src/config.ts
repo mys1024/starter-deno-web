@@ -3,6 +3,20 @@ import { decodeBase64, loadDotEnv } from "./deps.ts";
 // load .env
 await loadDotEnv({ export: true });
 
+/**
+ * A helper for getting environment variable.
+ */
+function getEnvVar<REQUIRED extends boolean>(
+  key: string,
+  required: REQUIRED,
+) {
+  const envVar = Deno.env.get(key);
+  if (required && envVar === undefined) {
+    throw new Error(`Environment variable "${key}" is required.`);
+  }
+  return envVar as REQUIRED extends true ? string : string | undefined;
+}
+
 const _TIMEZONE_OFFSET = getEnvVar("TIMEZONE_OFFSET", false);
 const _JWT_KEY_PUBLIC = getEnvVar("JWT_KEY_PUBLIC", false);
 const _JWT_KEY_PRIVATE = getEnvVar("JWT_KEY_PRIVATE", false);
@@ -39,19 +53,5 @@ const JWT_KEY_PRIVATE = _JWT_KEY_PRIVATE
     ["sign"],
   )
   : undefined;
-
-/**
- * A helper for getting environment variable.
- */
-function getEnvVar<REQUIRED extends boolean>(
-  key: string,
-  required: REQUIRED,
-) {
-  const envVar = Deno.env.get(key);
-  if (required && envVar === undefined) {
-    throw new Error(`Environment variable "${key}" is required.`);
-  }
-  return envVar as REQUIRED extends true ? string : string | undefined;
-}
 
 export { JWT_KEY_PRIVATE, JWT_KEY_PUBLIC, TIMEZONE_OFFSET };

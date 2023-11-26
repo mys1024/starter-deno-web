@@ -1,12 +1,12 @@
 import { oak } from "../deps.ts";
-import output from "../utils/output.ts";
+import { logx } from "../deps.ts";
 
 function logger(): oak.Middleware {
   return async (ctx, next) => {
     const startTime = Date.now();
     await next();
     const endTime = Date.now();
-    output.log([
+    logx.log([
       ctx.request.ip,
       ctx.request.method,
       ctx.request.url,

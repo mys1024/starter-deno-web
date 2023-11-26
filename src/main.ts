@@ -1,7 +1,11 @@
 import app from "./app.ts";
-import output from "./utils/output.ts";
+import { logx } from "./deps.ts";
+import { TIMEZONE_OFFSET } from "./config.ts";
 
+// set logx's timezone offset
+logx.setTimezoneOffset(TIMEZONE_OFFSET);
+
+// http
 const port = 80;
-
 app.listen({ port });
-output.info(`Serving HTTP on port ${port}...`);
+logx.info(`Serving HTTP on port ${port}...`);
