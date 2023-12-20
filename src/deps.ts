@@ -1,13 +1,13 @@
 /* -------------------------------------------------- std -------------------------------------------------- */
 
-export { load as loadDotEnv } from "https://deno.land/std@0.206.0/dotenv/mod.ts";
+export { load as loadDotEnv } from "https://deno.land/std@0.209.0/dotenv/mod.ts";
 
 export {
   decodeBase64,
   encodeBase64,
-} from "https://deno.land/std@0.206.0/encoding/base64.ts";
+} from "https://deno.land/std@0.209.0/encoding/base64.ts";
 
-export * as colors from "https://deno.land/std@0.206.0/fmt/colors.ts";
+export * as colors from "https://deno.land/std@0.209.0/fmt/colors.ts";
 
 /* -------------------------------------------------- third party -------------------------------------------------- */
 
